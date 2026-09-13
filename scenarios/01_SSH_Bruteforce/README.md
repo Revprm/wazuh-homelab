@@ -34,7 +34,9 @@ The Wazuh agent successfully intercepted the malicious traffic via the `journald
 
 **Visual Evidence:**
 
+Before Attack:<br>
 ![Before Attack](./assets/Events_Before_SSH_Attack.png)
+After Attack:<br>
 ![After Attack](./assets/Events_After_SSH_Attack.png)
 
 **Log Artifacts:**
