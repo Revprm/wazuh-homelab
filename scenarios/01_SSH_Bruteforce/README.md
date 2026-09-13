@@ -75,9 +75,9 @@ To transition from passive detection to active defense, automated containment wa
 
 ### Validation Evidence
 
-- Firewall Rule Drop Verification:
+- Firewall Rule Drop Verification:<br>
   ![Firewall_drop_iptables](assets/firewall_drop_iptables.png)
-- Active Response Execution Log:
+- Active Response Execution Log:<br>
   ![active_response_log](assets/active_response_log.png)
 
 ### Long-term Fix:
