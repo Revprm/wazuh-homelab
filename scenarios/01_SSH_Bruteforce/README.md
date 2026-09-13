@@ -24,7 +24,6 @@ An automated dictionary attack was launched from the Kali Linux attacker machine
 
 ```bash
 hydra -l soclab -P /usr/share/wordlists/fasttrack.txt ssh://192.168.122.25
-
 ```
 
 ---
@@ -53,5 +52,34 @@ The SSH service on the target endpoint was exposed to the local network with pas
 
 ## 4. Remediation & Response
 
-- **Immediate Action:** Utilize Wazuh Active Response to dynamically add the attacking IP (`192.168.122.228`) to the firewall drop list after 5 failed authentication attempts.
-- **Long-term Fix:** Modify the `/etc/ssh/sshd_config` file on the Debian endpoint to disable password authentication (`PasswordAuthentication no`) and enforce public key cryptography (e.g., `ed25519` keys).
+### Active Response Implementation Steps:
+
+To transition from passive detection to active defense, automated containment was configured using Wazuh Active Response:
+
+1.  Configure Manager Command Action:<br>
+    Updated the Wazuh Manager configuration (running via Docker on the Arch Linux host) through the Dashboard configuration manager to link Rule 40111 with the firewall-drop active response script:
+    XML
+    `    <active-response>
+    <command>firewall-drop</command>
+    <location>local</location>
+    <rules_id>40111</rules_id>
+    <timeout>180</timeout>
+</active-response>`
+2.  Verify Agent Prerequisites:<br>
+    Ensured iptables was installed and active on the Debian 12 endpoint to allow the script to dynamically modify firewall rules:
+
+        `sudo apt install iptables -y`
+
+3.  Trigger and Validate Containment:<br>
+    Re-ran the Hydra brute-force simulation from Kali Linux. Upon reaching the threshold for Rule 40111, the Wazuh agent automatically executed the script, dropped the attacker's connection, and quarantined the IP.
+
+### Validation Evidence
+
+- Firewall Rule Drop Verification:
+  ![Firewall_drop_iptables](assets/firewall_drop_iptables.png)
+- Active Response Execution Log:
+  ![active_response_log](assets/active_response_log.png)
+
+### Long-term Fix:
+
+Modify the `/etc/ssh/sshd_config` file on the Debian endpoint to disable password authentication entirely (`PasswordAuthentication no`) and enforce strict public key cryptography (e.g., `ed25519` keys).
