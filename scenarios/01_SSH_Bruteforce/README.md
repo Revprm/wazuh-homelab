@@ -68,7 +68,7 @@ To transition from passive detection to active defense, automated containment wa
 2.  Verify Agent Prerequisites:<br>
     Ensured iptables was installed and active on the Debian 12 endpoint to allow the script to dynamically modify firewall rules:
 
-        `sudo apt install iptables -y`
+    `sudo apt install iptables -y`
 
 3.  Trigger and Validate Containment:<br>
     Re-ran the Hydra brute-force simulation from Kali Linux. Upon reaching the threshold for Rule 40111, the Wazuh agent automatically executed the script, dropped the attacker's connection, and quarantined the IP.
