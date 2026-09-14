@@ -1,0 +1,78 @@
+{
+  "_index": "wazuh-alerts-4.x-2026.09.14",
+  "_id": "AJ7bn6ABfBK55O2O231O",
+  "_score": null,
+  "_source": {
+    "syscheck": {
+      "size_before": "54",
+      "uname_after": "root",
+      "mtime_after": "2026-09-14T12:19:36",
+      "size_after": "103",
+      "gid_after": "0",
+      "md5_before": "64a39c8bc297c609b92e445c49419279",
+      "diff": "1a2\n> kali persistence Mon Sep 14 12:19:33 PM UTC 2026\n",
+      "sha256_before": "c31b234e07142d02b41acd232c63a28a0f64e2038a9939f7b48aef06c63df240",
+      "mtime_before": "2026-09-14T12:04:16",
+      "mode": "realtime",
+      "path": "/tmp/fim-test/test.txt",
+      "sha1_after": "7cde7e227791e34d6d7b0dd799a6860778ae067b",
+      "changed_attributes": ["size", "mtime", "md5", "sha1", "sha256"],
+      "gname_after": "root",
+      "uid_after": "0",
+      "perm_after": "rw-r--r--",
+      "event": "modified",
+      "md5_after": "4964c3ff9818a293811c68940024b9da",
+      "sha1_before": "cafb207ecd5147150ce3ff44e51a3a8a16291a50",
+      "sha256_after": "d03234e16ebc638e4eab9cb2930f3416dd011a7b3d5fe96ac2d40857e6412cb9",
+      "inode_after": 173
+    },
+    "input": {
+      "type": "log"
+    },
+    "agent": {
+      "ip": "192.168.122.25",
+      "name": "debian-agent",
+      "id": "001"
+    },
+    "manager": {
+      "name": "wazuh.manager"
+    },
+    "rule": {
+      "mail": false,
+      "level": 7,
+      "pci_dss": ["11.5"],
+      "hipaa": ["164.312.c.1", "164.312.c.2"],
+      "tsc": ["PI1.4", "PI1.5", "CC6.1", "CC6.8", "CC7.2", "CC7.3"],
+      "description": "Integrity checksum changed.",
+      "groups": [
+        "ossec",
+        "syscheck",
+        "syscheck_entry_modified",
+        "syscheck_file"
+      ],
+      "nist_800_53": ["SI.7"],
+      "gdpr": ["II_5.1.f"],
+      "firedtimes": 3,
+      "mitre": {
+        "technique": ["Stored Data Manipulation"],
+        "id": ["T1565.001"],
+        "tactic": ["Impact"]
+      },
+      "id": "550",
+      "gpg13": ["4.11"]
+    },
+    "location": "syscheck",
+    "decoder": {
+      "name": "syscheck_integrity_changed"
+    },
+    "id": "1789388376.59443",
+    "full_log": "File '/tmp/fim-test/test.txt' modified\nMode: realtime\nChanged attributes: size,mtime,md5,sha1,sha256\nSize changed from '54' to '103'\nOld modification time was: '1789387456', now it is '1789388376'\nOld md5sum was: '64a39c8bc297c609b92e445c49419279'\nNew md5sum is : '4964c3ff9818a293811c68940024b9da'\nOld sha1sum was: 'cafb207ecd5147150ce3ff44e51a3a8a16291a50'\nNew sha1sum is : '7cde7e227791e34d6d7b0dd799a6860778ae067b'\nOld sha256sum was: 'c31b234e07142d02b41acd232c63a28a0f64e2038a9939f7b48aef06c63df240'\nNew sha256sum is : 'd03234e16ebc638e4eab9cb2930f3416dd011a7b3d5fe96ac2d40857e6412cb9'\n",
+    "timestamp": "2026-09-14T12:19:36.015+0000"
+  },
+  "fields": {
+    "syscheck.mtime_after": ["2026-09-14T12:19:36.000Z"],
+    "syscheck.mtime_before": ["2026-09-14T12:04:16.000Z"],
+    "timestamp": ["2026-09-14T12:19:36.015Z"]
+  },
+  "sort": [1789388376015]
+}
