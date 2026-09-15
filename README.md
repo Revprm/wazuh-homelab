@@ -4,13 +4,7 @@ My Personal Wazuh Home Lab to explore how Wazuh works and learning the concepts 
 
 ## Architecture
 
-### Linux Agent
-
-![Linux_Architecture](assets/Linux-Architecture.png)
-
-### Windows Agent
-
-[TODO]
+![HomeLab_Architecture](assets/HomeLab-Architecture.png)
 
 ## Scenarios
 
